@@ -90,7 +90,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 flex: 1,
               ),
               const Text(
-                'Samaj',
+                'Crispy',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
               ),
               const SizedBox(
@@ -105,8 +105,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         )
                       : const CircleAvatar(
                           radius: 64,
-                          backgroundImage:
-                              NetworkImage('https://st2.depositphotos.com/17253970/45884/v/380/depositphotos_458842286-stock-illustration-funny-face-vector-icon-which.jpg?forcejpeg=true'),
+                          backgroundImage: NetworkImage(
+                              'https://st2.depositphotos.com/17253970/45884/v/380/depositphotos_458842286-stock-illustration-funny-face-vector-icon-which.jpg?forcejpeg=true'),
                         ),
                   Positioned(
                       bottom: -10,
@@ -162,7 +162,10 @@ class _SignupScreenState extends State<SignupScreen> {
                             color: primaryColor,
                           ),
                         )
-                      : const Text('Sign Up', style: TextStyle(color: Colors.black),),
+                      : const Text(
+                          'Sign Up',
+                          style: TextStyle(color: Colors.black),
+                        ),
                   width: double.infinity,
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(20),
@@ -184,7 +187,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 children: [
                   Container(
                     child: const Text(
-                      "Already have a page?",
+                      "Already have an account?",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     padding: const EdgeInsets.symmetric(vertical: 8),

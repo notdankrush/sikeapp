@@ -58,19 +58,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
                 color: Colors.white,
               ),
           Icon(
-                Icons.feed,
-                color: Colors.white,
-              ),
-          Icon(
                 Icons.upload,
-                color: Colors.white,
-              ),
-          Icon(
-                Icons.notifications,
-                color: Colors.white,
-              ),
-          Icon(
-                Icons.person,
                 color: Colors.white,
               ),
         ],

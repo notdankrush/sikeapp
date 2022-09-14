@@ -116,7 +116,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
           )
         : Scaffold(
             appBar: AppBar(
-              backgroundColor: mobileBackgroundColor,
+              backgroundColor: Colors.grey.shade800,
               leading: IconButton(
                 icon: const Icon(Icons.close),
                 onPressed: clearImage,
@@ -153,7 +153,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
                     child: TextField(
                       controller: _descriptionController,
                       decoration: InputDecoration(
-                          hintText: 'Write a description .....',
+                          hintText: '''Write a description related to this post
+                          Note: Only Crispy can see it for future use.''',
                           border: InputBorder.none),
                       maxLines: 10,
                     ),
