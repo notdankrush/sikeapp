@@ -90,7 +90,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 flex: 1,
               ),
               const Text(
-                'Crispy',
+                'Sike',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
               ),
               const SizedBox(
@@ -122,7 +122,7 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
               TextFieldInput(
                 textEditingController: _usernameController,
-                hintText: 'Enter your page name',
+                hintText: 'Enter your nickname',
                 textInputType: TextInputType.text,
               ),
               const SizedBox(
@@ -154,7 +154,20 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 6,
               ),
               InkWell(
-                onTap: signUpUser,
+                onTap: () {
+                  if (_image == null) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("Please select an Image")));
+                  } else if (_usernameController.text.isNotEmpty &&
+                      _emailController.text.isNotEmpty &&
+                      _passwordController.text.isNotEmpty &&
+                      _bioController.text.isNotEmpty) {
+                    signUpUser();
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("Fields can't be empty")));
+                  }
+                },
                 child: Container(
                   child: _isLoading
                       ? const Center(

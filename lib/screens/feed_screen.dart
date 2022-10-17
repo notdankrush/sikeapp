@@ -13,7 +13,7 @@ class FeedScreen extends StatelessWidget {
         backgroundColor: Colors.grey.shade800,
         centerTitle: false,
         title: const Text(
-          'Crispy',
+          'Sike',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 36,

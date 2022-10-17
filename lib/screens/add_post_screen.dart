@@ -154,7 +154,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                       controller: _descriptionController,
                       decoration: InputDecoration(
                           hintText: '''Write a description related to this post
-                          Note: Only Crispy can see it for future use.''',
+                          Note: Only Sike can see it for future use.''',
                           border: InputBorder.none),
                       maxLines: 10,
                     ),

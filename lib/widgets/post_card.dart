@@ -1,5 +1,6 @@
 import 'package:card/resources/firestore_methods.dart';
 import 'package:card/screens/comments_screen.dart';
+import 'package:card/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:card/providers/user_provider.dart';
 import 'package:card/utils/colors.dart';
@@ -56,6 +57,40 @@ class _PostCardState extends State<PostCard> {
                     ],
                   ),
                 )),
+                IconButton(
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) => Dialog(
+                                child: ListView(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 16),
+                                  shrinkWrap: true,
+                                  children: [
+                                    'Sexual Content',
+                                    'Violent or repulsive',
+                                    'Hateful or abusive content',
+                                    'Harmful or dangerous acts',
+                                    'Spam or misleading',
+                                    'Block User'
+                                  ]
+                                      .map(
+                                        (e) => InkWell(
+                                          onTap: () async {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 12, horizontal: 16),
+                                            child: Text(e),
+                                          ),
+                                        ),
+                                      )
+                                      .toList(),
+                                ),
+                              ));
+                    },
+                    icon: const Icon(Icons.flag))
               ],
             ),
           ),
@@ -69,9 +104,8 @@ class _PostCardState extends State<PostCard> {
             },
             child: Stack(alignment: Alignment.center, children: [
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.35,
                 width: double.infinity,
-                child: Image.network(widget.snap['postUrl'], fit: BoxFit.cover),
+                child: Image.network(widget.snap['postUrl'], fit: BoxFit.fitWidth),
               ),
               AnimatedOpacity(
                 duration: const Duration(milliseconds: 200),

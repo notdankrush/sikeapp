@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 flex: 1,
               ),
               const Text(
-                'Samaj',
+                'Sike',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
               ),
               const SizedBox(
@@ -101,7 +101,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: primaryColor,
                           ),
                         )
-                      : const Text('Log in', style: TextStyle(color: Colors.black),),
+                      : const Text(
+                          'Log in',
+                          style: TextStyle(color: Colors.black),
+                        ),
                   width: double.infinity,
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(20),
