@@ -4,6 +4,7 @@ import 'package:card/responsive/responsive_layout_screen.dart';
 import 'package:card/responsive/web_screen_layout.dart';
 import 'package:card/screens/login_screen.dart';
 import 'package:card/screens/signup_screen.dart';
+import 'package:card/screens/splash_screen.dart';
 import 'package:card/utils/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -70,7 +71,7 @@ class MyApp extends StatelessWidget {
                 child: LinearProgressIndicator(color: primaryColor),
               );
             }
-            return LoginScreen();
+            return SplashScreen();
           },
         ),
       ),

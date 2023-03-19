@@ -21,6 +21,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
   final TextEditingController _descriptionController = TextEditingController();
 
   bool _isLoading = false;
+  bool _clicked = true; 
 
   void postImage(
     String uid,
@@ -124,8 +125,12 @@ class _AddPostScreenState extends State<AddPostScreen> {
               title: const Text('Upload to'),
               actions: [
                 TextButton(
-                    onPressed: () =>
-                        postImage(user.uid, user.username, user.photoUrl),
+                    onPressed: _clicked ?  () {
+                        postImage(user.uid, user.username, user.photoUrl);
+                        setState(() {
+                          _clicked = false;
+                        });
+                    } : null,
                     child: const Text(
                       'Upload',
                       style: TextStyle(

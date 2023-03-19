@@ -2,6 +2,7 @@ import 'package:card/utils/colors.dart';
 import 'package:card/widgets/post_card.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:upgrader/upgrader.dart';
 
 class FeedScreen extends StatelessWidget {
   const FeedScreen({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class FeedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey.shade800,
+        backgroundColor: Colors.black,
         centerTitle: false,
         title: const Text(
           'Sike',
@@ -21,22 +22,30 @@ class FeedScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('posts').orderBy('datePublished',descending: true).snapshots(),
-        builder: (context,
-            AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: LinearProgressIndicator(),
+      body: UpgradeAlert(
+        upgrader: Upgrader(
+          shouldPopScope: () => true,
+          canDismissDialog: true,
+          durationUntilAlertAgain: const Duration(days: 1),
+          dialogStyle: UpgradeDialogStyle.material
+        ),
+        child: StreamBuilder(
+          stream: FirebaseFirestore.instance.collection('posts').orderBy('datePublished',descending: true).snapshots(),
+          builder: (context,
+              AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: LinearProgressIndicator(),
+              );
+            }
+            return ListView.builder(
+              itemCount: snapshot.data!.docs.length,
+              itemBuilder: (context, index) => PostCard(
+                snap: snapshot.data!.docs[index].data(),
+              ),
             );
-          }
-          return ListView.builder(
-            itemCount: snapshot.data!.docs.length,
-            itemBuilder: (context, index) => PostCard(
-              snap: snapshot.data!.docs[index].data(),
-            ),
-          );
-        },
+          },
+        ),
       ),
     );
   }
